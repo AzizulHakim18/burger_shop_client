@@ -1,0 +1,117 @@
+[
+    {
+        "id": 1,
+        "name": "classic veggie burger",
+        "category": "veg",
+        "varients": [
+            "small",
+            "medium",
+            "large"
+        ],
+        "price": [
+            {
+                "small": 200
+            },
+            {
+                "medium": 350
+            },
+            {
+                "large": 400
+            }
+        ],
+        "image": "https://i.ibb.co.com/SXbM7h0/2-1.jpg",
+        "description": "A delicious classic veggie burger made with a mix of fresh vegetables, herbs, and spices. Grilled to perfection and served with crisp lettuce, juicy tomatoes, and a tangy sauce. Perfect for vegetarians and anyone who loves a good, hearty burger."
+    },
+    {
+        "id": 2,
+        "name": "spicy chicken burger",
+        "category": "nonveg",
+        "varients": [
+            "small",
+            "medium",
+            "large"
+        ],
+        "price": [
+            {
+                "small": 250
+            },
+            {
+                "medium": 400
+            },
+            {
+                "large": 450
+            }
+        ],
+        "image": "https://i.ibb.co.com/ZHLM0vQ/3.jpg",
+        "description": "Our spicy chicken burger is packed with flavor! Featuring a succulent, spicy chicken patty, topped with fresh lettuce, tomatoes, and a spicy mayo sauce. A great choice for those who like their burgers with a bit of a kick."
+    },
+    {
+        "id": 3,
+        "name": "double cheese beef burger",
+        "category": "nonveg",
+        "varients": [
+            "small",
+            "medium",
+            "large"
+        ],
+        "price": [
+            {
+                "small": 300
+            },
+            {
+                "medium": 450
+            },
+            {
+                "large": 500
+            }
+        ],
+        "image": "https://i.ibb.co.com/phJJpsL/2-2.jpg",
+        "description": "This burger is a meat lover's dream! A juicy beef patty topped with double layers of melted cheese, crispy lettuce, onions, and our special burger sauce. Served on a toasted bun, it's a classic that never goes out of style."
+    },
+    {
+        "id": 4,
+        "name": "mushroom swiss burger",
+        "category": "veg",
+        "varients": [
+            "small",
+            "medium",
+            "large"
+        ],
+        "price": [
+            {
+                "small": 220
+            },
+            {
+                "medium": 370
+            },
+            {
+                "large": 420
+            }
+        ],
+        "image": "https://i.ibb.co.com/HGc9dDk/3-1.jpg",
+        "description": "A gourmet veggie burger featuring a savory mushroom patty topped with melted Swiss cheese, sautéed mushrooms, and fresh greens. This burger offers a rich, earthy flavor that is sure to satisfy your taste buds."
+    },
+    {
+        "id": 5,
+        "name": "bbq bacon burger",
+        "category": "nonveg",
+        "varients": [
+            "small",
+            "medium",
+            "large"
+        ],
+        "price": [
+            {
+                "small": 280
+            },
+            {
+                "medium": 430
+            },
+            {
+                "large": 480
+            }
+        ],
+        "image": "https://i.ibb.co.com/phJJpsL/2-2.jpg",
+        "description": "Our BBQ Bacon Burger combines the smoky flavor of barbecue sauce with crispy bacon and a juicy beef patty. Topped with cheddar cheese, lettuce, and onions, this burger is a mouthwatering experience you won't want to miss."
+    }
+]

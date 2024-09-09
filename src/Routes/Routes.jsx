@@ -6,6 +6,7 @@ import About from "../Pages/About/About";
 import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
 import ClerkSignIn from "../Register/ClerkSignIn";
+import Burgers from "../Pages/Burger/Burgers";
 
 
 
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
             {
                 path: "/signin",
                 element: <ClerkSignIn></ClerkSignIn>
+            },
+            {
+                path: "/order",
+                element: <Burgers></Burgers>
             },
         ]
     }

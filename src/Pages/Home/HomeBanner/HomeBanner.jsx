@@ -47,7 +47,7 @@ const HomeBanner = () => {
                         BURGER <span>SHOP - </span> BURGER <span>SHOP - </span> BURGER <span>SHOP - </span> BURGER <span>SHOP - </span>
                     </div>
                 </div>
-                <div className='flex justify-center items-center'> <Link to="/home" className="mouse">Get Start</Link></div>
+                <div className='flex justify-center items-center'> <Link to="/order" className="mouse">Get Start</Link></div>
             </section>
         </div>
     );
