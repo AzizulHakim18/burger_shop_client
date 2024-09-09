@@ -5,6 +5,7 @@ import Home from "../Pages/Home/Home";
 import About from "../Pages/About/About";
 import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
+import ClerkSignIn from "../Register/ClerkSignIn";
 
 
 
@@ -29,7 +30,11 @@ export const router = createBrowserRouter([
             {
                 path: "/contact",
                 element: <Contact></Contact>
-            }
+            },
+            {
+                path: "/signin",
+                element: <ClerkSignIn></ClerkSignIn>
+            },
         ]
     }
 ])

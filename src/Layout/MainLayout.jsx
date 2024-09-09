@@ -10,7 +10,6 @@ const MainLayout = () => {
                 <Header></Header>
             </div>
             <Outlet></Outlet>
-            <Footer></Footer>
         </div>
     );
 };
