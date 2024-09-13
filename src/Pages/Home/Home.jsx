@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeBanner from './HomeBanner/HomeBanner';
-import Burgers from '../Burger/Burgers';
 
 const Home = () => {
+
+
     return (
         <div>
             <HomeBanner></HomeBanner>

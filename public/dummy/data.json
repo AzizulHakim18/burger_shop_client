@@ -10,12 +10,8 @@
         ],
         "price": [
             {
-                "small": 200
-            },
-            {
-                "medium": 350
-            },
-            {
+                "small": 200,
+                "medium": 350,
                 "large": 400
             }
         ],
@@ -33,12 +29,8 @@
         ],
         "price": [
             {
-                "small": 250
-            },
-            {
-                "medium": 400
-            },
-            {
+                "small": 250,
+                "medium": 400,
                 "large": 450
             }
         ],
@@ -56,12 +48,8 @@
         ],
         "price": [
             {
-                "small": 300
-            },
-            {
-                "medium": 450
-            },
-            {
+                "small": 300,
+                "medium": 450,
                 "large": 500
             }
         ],
@@ -79,12 +67,8 @@
         ],
         "price": [
             {
-                "small": 220
-            },
-            {
-                "medium": 370
-            },
-            {
+                "small": 220,
+                "medium": 370,
                 "large": 420
             }
         ],
@@ -102,12 +86,8 @@
         ],
         "price": [
             {
-                "small": 280
-            },
-            {
-                "medium": 430
-            },
-            {
+                "small": 280,
+                "medium": 430,
                 "large": 480
             }
         ],

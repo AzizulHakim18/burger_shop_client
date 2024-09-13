@@ -1,7 +1,9 @@
 import React from 'react';
 import burgers from "../../../public/dummy/data.json"
 import BurgerDetails from './BurgerDetails';
+import { useOutletContext } from 'react-router-dom';
 const Burgers = () => {
+
     return (
         <div className='flex justify-center items-center'>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
@@ -9,6 +11,7 @@ const Burgers = () => {
                     burgers.map((burger) => <BurgerDetails
                         key={burger.id}
                         burger={burger}
+
                     ></BurgerDetails>)
                 }
             </div>
