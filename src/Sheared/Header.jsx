@@ -10,7 +10,7 @@ const Header = () => {
     console.log(user);
 
     const { cartItems } = useContext(CartContext);
-    console.log(cartItems);
+
     const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
 
@@ -83,7 +83,7 @@ const Header = () => {
                             <span className="text-lg font-bold">{totalItems} Items</span>
                             <span className="text-info">Subtotal:{totalPrice}BDT</span>
                             <div className="card-actions">
-                                <button className="btn btn-primary btn-block">View cart</button>
+                                <Link to="/mycart" className="btn btn-primary btn-block"> View cart</Link>
                             </div>
                         </div>
                     </div>

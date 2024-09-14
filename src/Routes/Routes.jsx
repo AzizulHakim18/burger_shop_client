@@ -7,6 +7,7 @@ import Blog from "../Pages/Blog/Blog";
 import Contact from "../Pages/Contact/Contact";
 import ClerkSignIn from "../Register/ClerkSignIn";
 import Burgers from "../Pages/Burger/Burgers";
+import MyCart from "../Pages/MyCart/MyCart";
 
 
 
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
             {
                 path: "/order",
                 element: <Burgers></Burgers>
+            },
+            {
+                path: "/mycart",
+                element: <MyCart></MyCart>
             },
         ]
     }
