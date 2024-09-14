@@ -1,8 +1,15 @@
-import React from 'react';
-import burgers from "../../../public/dummy/data.json"
+import React, { useEffect, useState } from 'react';
 import BurgerDetails from './BurgerDetails';
-import { useOutletContext } from 'react-router-dom';
 const Burgers = () => {
+    const [burgers, setBurgers] = useState([])
+
+    useEffect(() => {
+
+        fetch("http://localhost:8000/burgers")
+            .then(response => response.json())
+            .then(data => setBurgers(data))
+    }, [])
+
 
     return (
         <div className='flex justify-center items-center'>

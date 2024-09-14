@@ -1,29 +1,70 @@
 import { useUser } from '@clerk/clerk-react';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../UseContext/CartContext';
+
 
 
 const ConfirmationForm = () => {
 
     const { user } = useUser();  // Clerk user data
-    console.log(user?.emailAddresses[0].emailAddress);
+    const { cartItems, setCartItems } = useContext(CartContext)
+    console.log(setCartItems);
+    const navigate = useNavigate();
+
+    // Form state
     const [formData, setFormData] = useState({
-        name: "",
+        name: user?.fullName || "",  // Pre-fill name if available from Clerk
         phone: "",
         address: "",
         paymentMethod: "",
     });
 
+    // Handle form data changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form Data: ", { ...formData, email: user.email });
-        // Add logic to handle form submission or payment processing
-    };
+    // Handle cash on delivery
+    const handleCashOnDelivery = () => {
+        // Prepare the order data to send to the backend
+        const orderData = {
+            customerInfo: {
+                name: formData.name,
+                email: user?.emailAddresses[0]?.emailAddress,
+                phone: formData.phone,
+                address: formData.address,
+            },
+            orderItems: cartItems, // Include cart items in the order
+            paymentMethod: "Cash on Delivery",
+            orderDate: new Date(),
+        };
+        console.log(orderData);
+        // Use fetch to send POST request to the server
+        fetch("http://localhost:8000/orders", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(orderData) // Convert JS object to JSON string
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Order placed successfully:", data);
 
+
+                localStorage.removeItem("cartItems"); // Clear localStorage
+                setCartItems([]); // Clear cart state
+                navigate('/ordersuccess'); // Redirect to success page
+                // Adjust timeout duration as needed
+            })
+            .catch(error => {
+                console.error("Error placing order:", error);
+            });
+
+
+    };
 
 
 
@@ -34,7 +75,7 @@ const ConfirmationForm = () => {
 
                 <h2 className="text-3xl font-bold text-center mb-8">Payment Information</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form className="space-y-6">
                     <div>
                         <label className="block text-sm font-bold mb-2">Name</label>
                         <input
@@ -114,14 +155,14 @@ const ConfirmationForm = () => {
                     <div className="mt-6 flex justify-between">
                         <button
                             type="submit"
-                            className="btn btn-primary w-1/2 mr-2 animate-pulse hover:animate-none"
+                            className="btn btn-outline w-1/2 mr-2  "
                         >
                             Pay Now
                         </button>
                         <button
                             type="button"
-                            className="btn btn-secondary w-1/2 ml-2"
-                            onClick={() => console.log('Cash on Delivery')}
+                            className="btn btn-outline w-1/2 ml-2"
+                            onClick={handleCashOnDelivery}
                         >
                             Cash on Delivery
                         </button>

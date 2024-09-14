@@ -52,8 +52,6 @@ const CartProvider = ({ children }) => {
         }
     };
 
-
-
     // Increment quantity of a specific cart item
     const incrementQuantity = (id, varient) => {
         setCartItems(
@@ -90,8 +88,9 @@ const CartProvider = ({ children }) => {
     const removeItem = (id, varient) => {
         setCartItems(cartItems.filter((item) => !(item.id === id && item.varient === varient)));
     };
+
     return (
-        <CartContext.Provider value={{ cartItems, addToCart, incrementQuantity, decrementQuantity, removeItem }}>
+        <CartContext.Provider value={{ cartItems, setCartItems, addToCart, incrementQuantity, decrementQuantity, removeItem }}>
             {children}
         </CartContext.Provider>
     );

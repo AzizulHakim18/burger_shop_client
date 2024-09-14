@@ -9,6 +9,8 @@ import ClerkSignIn from "../Register/ClerkSignIn";
 import Burgers from "../Pages/Burger/Burgers";
 import MyCart from "../Pages/MyCart/MyCart";
 import ConfirmationForm from "../Pages/MyCart/ConfirmationForm";
+import OrderSuccess from "../Sheared/OrderSuccess";
+import MyOrders from "../Pages/MyOrders/MyOrders";
 
 
 
@@ -49,6 +51,14 @@ export const router = createBrowserRouter([
             {
                 path: "/confirmorder",
                 element: <ConfirmationForm></ConfirmationForm>
+            },
+            {
+                path: "/ordersuccess",
+                element: <OrderSuccess></OrderSuccess>
+            },
+            {
+                path: "/orderlist",
+                element: <MyOrders></MyOrders>
             },
 
         ]
