@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import ClerkSignIn from "../Register/ClerkSignIn";
 import Burgers from "../Pages/Burger/Burgers";
 import MyCart from "../Pages/MyCart/MyCart";
+import ConfirmationForm from "../Pages/MyCart/ConfirmationForm";
 
 
 
@@ -45,6 +46,11 @@ export const router = createBrowserRouter([
                 path: "/mycart",
                 element: <MyCart></MyCart>
             },
+            {
+                path: "/confirmorder",
+                element: <ConfirmationForm></ConfirmationForm>
+            },
+
         ]
     }
 ])

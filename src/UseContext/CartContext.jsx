@@ -52,8 +52,46 @@ const CartProvider = ({ children }) => {
         }
     };
 
+
+
+    // Increment quantity of a specific cart item
+    const incrementQuantity = (id, varient) => {
+        setCartItems(
+            cartItems.map((item) =>
+                item.id === id && item.varient === varient
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1,
+                        price: item.price + item.price / item.quantity, // Update price dynamically
+                    }
+                    : item
+            )
+        );
+    };
+
+    // Decrement quantity of a specific cart item
+    const decrementQuantity = (id, varient) => {
+        setCartItems(
+            cartItems
+                .map((item) =>
+                    item.id === id && item.varient === varient && item.quantity > 1
+                        ? {
+                            ...item,
+                            quantity: item.quantity - 1,
+                            price: item.price - item.price / item.quantity, // Update price dynamically
+                        }
+                        : item
+                )
+                .filter((item) => item.quantity > 0) // Remove item if quantity reaches 0
+        );
+    };
+
+    // Remove item from cart
+    const removeItem = (id, varient) => {
+        setCartItems(cartItems.filter((item) => !(item.id === id && item.varient === varient)));
+    };
     return (
-        <CartContext.Provider value={{ cartItems, addToCart }}>
+        <CartContext.Provider value={{ cartItems, addToCart, incrementQuantity, decrementQuantity, removeItem }}>
             {children}
         </CartContext.Provider>
     );
