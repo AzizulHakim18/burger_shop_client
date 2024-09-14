@@ -11,6 +11,9 @@ import MyCart from "../Pages/MyCart/MyCart";
 import ConfirmationForm from "../Pages/MyCart/ConfirmationForm";
 import OrderSuccess from "../Sheared/OrderSuccess";
 import MyOrders from "../Pages/MyOrders/MyOrders";
+import Dashboard from "../Dashboard/Dashboard";
+import AddProduct from "../Dashboard/AddProduct";
+import AdminPannel from "../Dashboard/AdminPannel";
 
 
 
@@ -41,7 +44,7 @@ export const router = createBrowserRouter([
                 element: <ClerkSignIn></ClerkSignIn>
             },
             {
-                path: "/order",
+                path: "/menu",
                 element: <Burgers></Burgers>
             },
             {
@@ -57,10 +60,26 @@ export const router = createBrowserRouter([
                 element: <OrderSuccess></OrderSuccess>
             },
             {
-                path: "/orderlist",
-                element: <MyOrders></MyOrders>
-            },
+                path: "/dashboard",
+                element: <Dashboard></Dashboard>,
+                children: [
+                    {
+                        path: "/dashboard/orderlist", // No need for "/dashboard/orderlist", just "orderlist"
+                        element: <MyOrders></MyOrders>
+                    },
+                    {
+                        path: "/dashboard/addproduct", // No need for "/dashboard/orderlist", just "orderlist"
+                        element: <AddProduct></AddProduct>
+                    },
+                    {
+                        path: "/dashboard/admin", // No need for "/dashboard/orderlist", just "orderlist"
+                        element: <AdminPannel></AdminPannel>
+                    },
+                ]
+            }
 
         ]
+
+
     }
 ])

@@ -41,7 +41,7 @@ const Contact = () => {
                                 </div>
                                 <div className="flex items-center space-x-4">
                                     <FontAwesomeIcon icon={faEnvelope} className="text-red-500" />
-                                    <p className="text-gray-600">support@burgerbliss.com</p>
+                                    <p className="text-gray-600">support@burgershop.com</p>
                                 </div>
                                 <div className="flex items-center space-x-4">
                                     <FontAwesomeIcon icon={faMapMarkerAlt} className="text-red-500" />
