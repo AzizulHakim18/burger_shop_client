@@ -16,9 +16,9 @@ import AddProduct from "../Dashboard/AddProduct";
 import Admin from "../Dashboard/Admin/Admin";
 import ProductMnag from "../Dashboard/Admin/ProductMnag";
 import OrderMange from "../Dashboard/Admin/OrderMange";
-import UserMang from "../Dashboard/Admin/UserMang";
 import { GrAnalytics } from "react-icons/gr";
 import EditProducts from "../Dashboard/Admin/EditProducts";
+import UserManagement from "../Dashboard/Admin/UserMangement/UserManagement";
 
 
 
@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
                             },
                             {
                                 path: "/dashboard/admin/user-management",
-                                element: <UserMang></UserMang>
+                                element: <UserManagement></UserManagement>
                             },
                             {
                                 path: "/dashboard/admin/analytics",

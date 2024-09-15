@@ -94,7 +94,7 @@ const EditProducts = () => {
 
     return (
         <div className="p-6 w-full md:w-2/3 mx-auto bg-white shadow-md rounded-lg">
-            <h1 className="text-2xl font-bold mb-4 text-center">Edit Burger</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center">Edit Burger {burger.name}</h1>
 
             <form onSubmit={handleEditSubmit}>
                 <div className='grid grid-cols-2 gap-4'>
