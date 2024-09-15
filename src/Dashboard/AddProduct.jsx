@@ -91,7 +91,7 @@ const AddProduct = () => {
 
     return (
         <div className="p-6 w-full md:w-2/3 mx-auto bg-white shadow-md rounded-lg">
-            <h1 className="text-2xl font-bold mb-4">Add a New Burger</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center">Add a New Burger</h1>
 
             <form onSubmit={handleSubmit}>
                 <div className='grid grid-cols-2 gap-4'>
@@ -124,7 +124,7 @@ const AddProduct = () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 gap-3'>
+                <div className='grid grid-cols-2 md:grid-cols-3 gap-3'>
                     <div className="mb-4">
                         <label className="block text-gray-700">Small Price</label>
                         <input
@@ -190,9 +190,11 @@ const AddProduct = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary w-full">
-                    Add Burger
-                </button>
+                <div className='w-full flex justify-end'>
+                    <button type="submit" className="btn btn-outline w-1/3">
+                        Add Burger
+                    </button>
+                </div>
             </form>
 
             {successMessage && (

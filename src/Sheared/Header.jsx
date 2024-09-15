@@ -94,7 +94,7 @@ const Header = () => {
                     }
                 </div>
                 <div>
-                    <Link to="/dashboard" className='btn btn-outline'>Dashboard</Link>
+                    <Link to="/dashboard/orderlist" className='btn btn-outline'>Dashboard</Link>
                 </div>
             </div>
         </div>
