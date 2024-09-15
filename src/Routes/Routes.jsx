@@ -13,7 +13,12 @@ import OrderSuccess from "../Sheared/OrderSuccess";
 import MyOrders from "../Pages/MyOrders/MyOrders";
 import Dashboard from "../Dashboard/Dashboard";
 import AddProduct from "../Dashboard/AddProduct";
-import AdminPannel from "../Dashboard/AdminPannel";
+import Admin from "../Dashboard/Admin/Admin";
+import ProductMnag from "../Dashboard/Admin/ProductMnag";
+import OrderMange from "../Dashboard/Admin/OrderMange";
+import UserMang from "../Dashboard/Admin/UserMang";
+import { GrAnalytics } from "react-icons/gr";
+import EditProducts from "../Dashboard/Admin/EditProducts";
 
 
 
@@ -64,16 +69,38 @@ export const router = createBrowserRouter([
                 element: <Dashboard></Dashboard>,
                 children: [
                     {
-                        path: "/dashboard/orderlist", // No need for "/dashboard/orderlist", just "orderlist"
+                        path: "/dashboard/orderlist",
                         element: <MyOrders></MyOrders>
                     },
                     {
-                        path: "/dashboard/addproduct", // No need for "/dashboard/orderlist", just "orderlist"
+                        path: "/dashboard/addproduct",
                         element: <AddProduct></AddProduct>
                     },
                     {
-                        path: "/dashboard/admin", // No need for "/dashboard/orderlist", just "orderlist"
-                        element: <AdminPannel></AdminPannel>
+                        path: "/dashboard/admin",
+                        element: <Admin></Admin>,
+                        children: [
+                            {
+                                path: "/dashboard/admin/product-management",
+                                element: <ProductMnag></ProductMnag>
+                            },
+                            {
+                                path: "/dashboard/admin/order-management",
+                                element: <OrderMange></OrderMange>
+                            },
+                            {
+                                path: "/dashboard/admin/user-management",
+                                element: <UserMang></UserMang>
+                            },
+                            {
+                                path: "/dashboard/admin/analytics",
+                                element: <GrAnalytics></GrAnalytics>
+                            },
+                            {
+                                path: "/dashboard/admin/edit/:id",
+                                element: <EditProducts></EditProducts>
+                            }
+                        ]
                     },
                 ]
             }
