@@ -6,6 +6,7 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './Routes/Routes.jsx'
 import { ClerkProvider } from '@clerk/clerk-react'
 import CartProvider from './UseContext/CartContext.jsx'
+import UserProvider from './UseContext/UsersContext.jsx'
 
 
 
@@ -19,12 +20,14 @@ if (!PUBLISHABLE_KEY) {
 
 createRoot(document.getElementById('root')).render(
 
-  <CartProvider>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <RouterProvider router={router}>
-        <App></App>
-      </RouterProvider>
-    </ClerkProvider>
-  </CartProvider>
+  <UserProvider>
+    <CartProvider>
+      <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
+        <RouterProvider router={router}>
+          <App></App>
+        </RouterProvider>
+      </ClerkProvider>
+    </CartProvider>
+  </UserProvider>
 
 )

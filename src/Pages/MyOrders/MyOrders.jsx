@@ -48,6 +48,7 @@ const MyOrders = () => {
                                 <div>
                                     <h3 className="text-lg font-bold">Customer: {order.customerInfo.name}</h3>
                                     <p className="text-sm text-gray-600">{order.customerInfo.email}</p>
+                                    <p className="text-sm text-gray-600">ID: {order._id}</p>
                                 </div>
                             </div>
                             <table className="table-auto w-full text-left border-collapse">
@@ -82,7 +83,9 @@ const MyOrders = () => {
                                     ))}
                                 </tbody>
                             </table>
+                            <h1 className='text-xl font-bold text-cyan-500 text-right'>Status: {order.status}</h1>
                         </div>
+
                     ))
                 ) : (
                     <p className="text-center text-gray-600">No orders found.</p>

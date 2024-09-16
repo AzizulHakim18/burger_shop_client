@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useUserContext } from '../../../UseContext/UsersContext';
 
 const UserManagement = () => {
 
@@ -10,8 +11,7 @@ const UserManagement = () => {
         image: '',
     });
     const [imagePreview, setImagePreview] = useState(null);
-    const [users, setUsers] = useState([]); // List of users
-
+    const { users, setUsers } = useUserContext();
     // Handle form input changes
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -47,6 +47,7 @@ const UserManagement = () => {
             });
             const data = await response.json();
             console.log('User added:', data);
+            setUsers([data.user, ...users]);
         } catch (error) {
             console.error('Error adding user:', error);
         }
