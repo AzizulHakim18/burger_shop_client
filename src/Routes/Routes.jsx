@@ -82,6 +82,10 @@ export const router = createBrowserRouter([
                         element: <Admin></Admin>,
                         children: [
                             {
+                                path: "/dashboard/admin",
+                                element: <OrderMange></OrderMange>
+                            },
+                            {
                                 path: "/dashboard/admin/product-management",
                                 element: <ProductMnag></ProductMnag>
                             },

@@ -1,9 +1,10 @@
 import React from 'react';
+import ReviewsBurger from './ReviewsBurger';
 
 const Blog = () => {
     return (
         <div>
-            this is blog seciton
+            <ReviewsBurger></ReviewsBurger>
         </div>
     );
 };
