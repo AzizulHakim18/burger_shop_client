@@ -83,12 +83,12 @@ const MyOrders = () => {
                                     ))}
                                 </tbody>
                             </table>
-                            <h1 className='text-xl font-bold text-cyan-500 text-right'>Status: {order.status}</h1>
+                            <h1 className='text-xl font-bold text-cyan-500 text-right'>Status: {order.status ? order.status : 'Order Confirmed'}</h1>
                         </div>
 
                     ))
                 ) : (
-                    <p className="text-center text-gray-600">No orders found.</p>
+                    <p className="text-center text-gray-600">No orders found. </p>
                 )}
             </div>
         </div>
