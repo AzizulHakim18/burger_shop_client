@@ -20,6 +20,7 @@ import { GrAnalytics } from "react-icons/gr";
 import EditProducts from "../Dashboard/Admin/EditProducts";
 import UserManagement from "../Dashboard/Admin/UserMangement/UserManagement";
 import SalesAnalytics from "../Dashboard/Admin/SalesAnalytics";
+import PrivateRoutes from "../Routes/PrivateRoutes"
 
 
 
@@ -55,19 +56,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/mycart",
-                element: <MyCart></MyCart>
+                element: <PrivateRoutes><MyCart></MyCart></PrivateRoutes>
             },
             {
                 path: "/confirmorder",
-                element: <ConfirmationForm></ConfirmationForm>
+                element: <PrivateRoutes><ConfirmationForm></ConfirmationForm></PrivateRoutes>
             },
             {
                 path: "/ordersuccess",
-                element: <OrderSuccess></OrderSuccess>
+                element: <PrivateRoutes><OrderSuccess></OrderSuccess></PrivateRoutes>
             },
             {
                 path: "/dashboard",
-                element: <Dashboard></Dashboard>,
+                element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
                 children: [
                     {
                         path: "/dashboard/orderlist",

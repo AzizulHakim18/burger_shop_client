@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useRole } from '../../UseContext/RoleContext';
 
 const ProductMnag = () => {
 
     const [burgers, setBurgers] = useState([]);
     const navigate = useNavigate()
+    const role = useRole()
     console.log(burgers._id);
     // Fetch burger data
     useEffect(() => {
@@ -62,7 +64,13 @@ const ProductMnag = () => {
                                     </button>
                                     <button
                                         className="btn btn-outline btn-error"
-                                        onClick={() => handleDelete(burger._id)}
+                                        onClick={() => {
+                                            if (role === 'admin') {
+                                                handleDelete(burger._id);
+                                            } else {
+                                                alert('Only admins can delete this product.');
+                                            }
+                                        }}
                                     >
                                         Delete
                                     </button>

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import LoadingSpin from "../../Sheared/LoadingSpin"
+import { useRole } from '../../UseContext/RoleContext';
 const EditProducts = () => {
     const { id } = useParams();  // Get the burger ID from the URL
     const navigate = useNavigate();  // For navigation after the update
-
+    const role = useRole()
     // State to hold the form data
     const [burger, setBurger] = useState({
         id: '',
@@ -194,7 +195,18 @@ const EditProducts = () => {
                 </div>
 
                 <div className='w-full flex justify-end'>
-                    <button type="submit" className="btn btn-outline w-1/3">
+                    <button
+                        type="submit"
+                        className="btn btn-outline w-1/3"
+                        onClick={(e) => {
+                            if (role === 'admin' || role === 'editor') {
+                                // Allow form submission to update the burger
+                            } else {
+                                e.preventDefault(); // Prevent form submission
+                                alert('You do not have permission to update this burger.');
+                            }
+                        }}
+                    >
                         Update Burger
                     </button>
                 </div>

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useRole } from '../../UseContext/RoleContext';
 
 const OrderMange = () => {
 
     const [orders, setOrders] = useState([]);
-
+    const role = useRole()
     useEffect(() => {
         // Fetch orders from the server
         const fetchOrders = async () => {
@@ -77,21 +78,41 @@ const OrderMange = () => {
                                 <td className="space-x-2">
                                     <button
                                         className="btn btn-sm btn-info"
-                                        onClick={() => updateOrderStatus(order._id, "Order Processing")}
+                                        onClick={() => {
+                                            if (role === 'admin' || role === 'editor') {
+                                                updateOrderStatus(order._id, "Order Processing");
+                                            } else {
+                                                alert('You do not have permission to process the order.');
+                                            }
+                                        }}
                                     >
                                         Process
                                     </button>
+
                                     <button
                                         className="btn btn-sm btn-success"
-                                        onClick={() => updateOrderStatus(order._id, "Delivered")}
+                                        onClick={() => {
+                                            if (role === 'admin' || role === 'editor') {
+                                                updateOrderStatus(order._id, "Delivered");
+                                            } else {
+                                                alert('You do not have permission to deliver the order.');
+                                            }
+                                        }}
                                     >
                                         Delivered
                                     </button>
+
                                     <button
                                         className="btn btn-sm btn-error"
-                                        onClick={() => deleteOrder(order._id)}
+                                        onClick={() => {
+                                            if (role === 'admin') {
+                                                deleteOrder(order._id);
+                                            } else {
+                                                alert('Only admins can cancel orders.');
+                                            }
+                                        }}
                                     >
-                                        Cencel
+                                        Cancel
                                     </button>
                                 </td>
                             </tr>

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useUserContext } from '../../../UseContext/UsersContext';
+import { useRole } from '../../../UseContext/RoleContext';
 
 const UserManagement = () => {
-
+    const role = useRole()
     const [user, setUser] = useState({
         name: '',
         email: '',
@@ -56,7 +57,36 @@ const UserManagement = () => {
         setUser({ name: '', email: '', role: 'editor', permissions: [], image: '' });
         setImagePreview(null);
     };
+    // Handle delete user
+    const handleDelete = async (userId) => {
+        if (role !== 'admin') {
+            alert('You do not have permission to delete users.');
+            return;
+        }
 
+        const confirmDelete = window.confirm('Are you sure you want to delete this user?');
+        if (!confirmDelete) return;
+
+        try {
+            const response = await fetch(`http://localhost:8000/serviceusers/${userId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                // Remove the user from the local state
+                setUsers(users.filter((user) => user._id !== userId));
+                alert(data.message);
+            } else {
+                alert(data.message || 'Error deleting user.');
+            }
+        } catch (error) {
+            console.error('Error deleting user:', error);
+        }
+    };
     // Fetch users from backend (dummy data here)
     useEffect(() => {
         // Fetch users
@@ -95,8 +125,20 @@ const UserManagement = () => {
                                 ))}
                             </ul>
                         </div>
+
+                        {/* Delete Button for Admins Only */}
+                        {role === 'admin' && (
+                            <button
+                                className="btn btn-outline btn-error mt-4"
+                                onClick={() => handleDelete(user._id)}
+                            >
+                                Delete User
+                            </button>
+                        )}
                     </div>
                 ))}
+
+
             </div>
 
             <h1 className="text-2xl font-bold m-4 text-center">Add a New User</h1>
@@ -195,7 +237,18 @@ const UserManagement = () => {
                 )}
 
                 <div className="text-right">
-                    <button type="submit" className="btn btn-outline">
+                    <button
+                        type="submit"
+                        className="btn btn-outline"
+                        onClick={(e) => {
+                            if (role === 'admin') {
+                                // Proceed with the form submission to add the user
+                            } else {
+                                e.preventDefault(); // Prevent form submission
+                                alert('You do not have permission to add users.');
+                            }
+                        }}
+                    >
                         Add User
                     </button>
                 </div>

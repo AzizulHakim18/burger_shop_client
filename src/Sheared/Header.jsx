@@ -7,7 +7,7 @@ import { CartContext } from '../UseContext/CartContext';
 const Header = () => {
 
     const { user, isLoaded, isSignedIn } = useUser()
-    console.log(user);
+    // console.log(user.id);
 
     const { cartItems } = useContext(CartContext);
 
