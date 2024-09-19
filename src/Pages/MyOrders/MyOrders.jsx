@@ -10,7 +10,7 @@ const MyOrders = () => {
         // Fetch orders for the logged-in user
         const fetchOrders = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/orders?email=${user?.emailAddresses[0].emailAddress}`);
+                const response = await fetch(`https://burgershopserver-production.up.railway.app/orders?email=${user?.emailAddresses[0].emailAddress}`);
                 const data = await response.json();
 
                 if (response.ok) {

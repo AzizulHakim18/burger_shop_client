@@ -41,7 +41,7 @@ const UserManagement = () => {
         // Submit the form data (including image) to the backend here.
 
         try {
-            const response = await fetch('http://localhost:8000/adduser', {
+            const response = await fetch('https://burgershopserver-production.up.railway.app/adduser', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)
@@ -68,7 +68,7 @@ const UserManagement = () => {
         if (!confirmDelete) return;
 
         try {
-            const response = await fetch(`http://localhost:8000/serviceusers/${userId}`, {
+            const response = await fetch(`https://burgershopserver-production.up.railway.app/serviceusers/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const UserManagement = () => {
     useEffect(() => {
         // Fetch users
         const fetchUsers = async () => {
-            const res = await fetch('http://localhost:8000/serviceusers');
+            const res = await fetch('https://burgershopserver-production.up.railway.app/serviceusers');
             const data = await res.json();
             setUsers(data);
         };
@@ -131,6 +131,7 @@ const UserManagement = () => {
                             <button
                                 className="btn btn-outline btn-error mt-4"
                                 onClick={() => handleDelete(user._id)}
+
                             >
                                 Delete User
                             </button>

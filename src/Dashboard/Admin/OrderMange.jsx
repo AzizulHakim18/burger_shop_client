@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRole } from '../../UseContext/RoleContext';
+import toast from 'react-hot-toast/headless';
 
 const OrderMange = () => {
 
@@ -9,7 +10,7 @@ const OrderMange = () => {
         // Fetch orders from the server
         const fetchOrders = async () => {
             try {
-                const response = await fetch("http://localhost:8000/admin/orders");
+                const response = await fetch("https://burgershopserver-production.up.railway.app/admin/orders");
                 const data = await response.json();
                 setOrders(data);
             } catch (error) {
@@ -23,7 +24,7 @@ const OrderMange = () => {
     // Handle order status update
     const updateOrderStatus = async (orderId, status) => {
         try {
-            await fetch(`http://localhost:8000/admin/orders/${orderId}/status`, {
+            await fetch(`https://burgershopserver-production.up.railway.app/admin/orders/${orderId}/status`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const OrderMange = () => {
     // Handle order delete
     const deleteOrder = async (orderId) => {
         try {
-            await fetch(`http://localhost:8000/admin/orders/${orderId}`, {
+            await fetch(`https://burgershopserver-production.up.railway.app/admin/orders/${orderId}`, {
                 method: "DELETE",
             });
             setOrders(orders.filter(order => order._id !== orderId));
@@ -81,6 +82,7 @@ const OrderMange = () => {
                                         onClick={() => {
                                             if (role === 'admin' || role === 'editor') {
                                                 updateOrderStatus(order._id, "Order Processing");
+                                                alert("Order Processing")
                                             } else {
                                                 alert('You do not have permission to process the order.');
                                             }
@@ -94,6 +96,7 @@ const OrderMange = () => {
                                         onClick={() => {
                                             if (role === 'admin' || role === 'editor') {
                                                 updateOrderStatus(order._id, "Delivered");
+                                                alert("Devlivered")
                                             } else {
                                                 alert('You do not have permission to deliver the order.');
                                             }
@@ -107,6 +110,7 @@ const OrderMange = () => {
                                         onClick={() => {
                                             if (role === 'admin') {
                                                 deleteOrder(order._id);
+                                                alert("Are you want to delete this item?")
                                             } else {
                                                 alert('Only admins can cancel orders.');
                                             }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import LoadingSpin from "../../Sheared/LoadingSpin"
 import { useRole } from '../../UseContext/RoleContext';
+import toast from 'react-hot-toast/headless';
 const EditProducts = () => {
     const { id } = useParams();  // Get the burger ID from the URL
     const navigate = useNavigate();  // For navigation after the update
@@ -29,7 +30,7 @@ const EditProducts = () => {
     useEffect(() => {
         const fetchBurger = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/burger/${id}`);
+                const response = await fetch(`https://burgershopserver-production.up.railway.app/burger/${id}`);
 
                 if (!response.ok) {
                     throw new Error(`Burger with ID ${id} not found`);
@@ -74,7 +75,7 @@ const EditProducts = () => {
         const { _id, ...updatedBurgerData } = burger;
 
         try {
-            const response = await fetch(`http://localhost:8000/editburger/${id}`, {
+            const response = await fetch(`https://burgershopserver-production.up.railway.app/editburger/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -201,9 +202,10 @@ const EditProducts = () => {
                         onClick={(e) => {
                             if (role === 'admin' || role === 'editor') {
                                 // Allow form submission to update the burger
+                                toast.success("successfully edit the product")
                             } else {
                                 e.preventDefault(); // Prevent form submission
-                                alert('You do not have permission to update this burger.');
+                                toast.error('You do not have permission to update this burger.');
                             }
                         }}
                     >

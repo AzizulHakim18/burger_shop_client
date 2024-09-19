@@ -12,7 +12,7 @@ const ReviewsBurger = () => {
     useEffect(() => {
         const fetchBurgers = async () => {
             try {
-                const response = await fetch('http://localhost:8000/burgers'); // Replace with your endpoint
+                const response = await fetch('https://burgershopserver-production.up.railway.app/burgers'); // Replace with your endpoint
                 const data = await response.json();
                 setBurgers(data);
                 console.log(data);
@@ -27,7 +27,7 @@ const ReviewsBurger = () => {
 
     const fetchReviews = async (burgerId, setReviews) => {
         try {
-            const response = await fetch(`http://localhost:8000/reviews/${burgerId}`);
+            const response = await fetch(`https://burgershopserver-production.up.railway.app/reviews/${burgerId}`);
             const data = await response.json();
             setReviews((prev) => ({
                 ...prev,
@@ -55,7 +55,7 @@ const ReviewsBurger = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/reviews', {
+            const response = await fetch('https://burgershopserver-production.up.railway.app/reviews', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

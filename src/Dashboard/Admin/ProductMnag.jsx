@@ -10,7 +10,7 @@ const ProductMnag = () => {
     console.log(burgers._id);
     // Fetch burger data
     useEffect(() => {
-        fetch('http://localhost:8000/burgers')
+        fetch('https://burgershopserver-production.up.railway.app/burgers')
             .then((response) => response.json())
             .then((data) => setBurgers(data))
             .catch((error) => console.error('Error fetching burgers:', error));
@@ -21,7 +21,7 @@ const ProductMnag = () => {
     // Handle delete (placeholder function)
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8000/burgers/${id}`, {
+            const response = await fetch(`https://burgershopserver-production.up.railway.app/burgers/${id}`, {
                 method: 'DELETE'
             });
 
@@ -67,6 +67,7 @@ const ProductMnag = () => {
                                         onClick={() => {
                                             if (role === 'admin') {
                                                 handleDelete(burger._id);
+                                                alert("Are you sure to delete this item?")
                                             } else {
                                                 alert('Only admins can delete this product.');
                                             }

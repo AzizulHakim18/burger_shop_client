@@ -10,7 +10,7 @@ const SalesAnalytics = () => {
     useEffect(() => {
         const fetchSales = async () => {
             try {
-                const response = await fetch('http://localhost:8000/admin/sales');
+                const response = await fetch('https://burgershopserver-production.up.railway.app/admin/sales');
                 const data = await response.json();
                 setSalesData(data);
             } catch (error) {
@@ -26,7 +26,7 @@ const SalesAnalytics = () => {
     useEffect(() => {
         const fetchProductSales = async () => {
             try {
-                const response = await fetch('http://localhost:8000/admin/sales/product');
+                const response = await fetch('https://burgershopserver-production.up.railway.app/admin/sales/product');
                 const data = await response.json();
                 setProductSalesData(data);
             } catch (error) {

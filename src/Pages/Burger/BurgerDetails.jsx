@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from '../../UseContext/CartContext';
-
 const BurgerDetails = ({ burger }) => {
 
     const { category, description, id, image, name, price, varients } = burger
@@ -12,7 +11,8 @@ const BurgerDetails = ({ burger }) => {
 
     // Function to handle adding to cart
     const handleAddToCart = () => {
-        addToCart(burger, varient, parseInt(quantity)); // Call addToCart from context
+        addToCart(burger, varient, parseInt(quantity));
+
     };
 
 

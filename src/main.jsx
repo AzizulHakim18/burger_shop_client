@@ -8,6 +8,7 @@ import { ClerkProvider } from '@clerk/clerk-react'
 import CartProvider from './UseContext/CartContext.jsx'
 import UserProvider from './UseContext/UsersContext.jsx'
 import { RoleProvider } from './UseContext/RoleContext.jsx'
+import { Toaster } from 'react-hot-toast'
 
 
 
@@ -28,6 +29,10 @@ createRoot(document.getElementById('root')).render(
         <CartProvider>
           <RouterProvider router={router}>
             <App></App>
+            <Toaster
+              position="bottom-center"
+              reverseOrder={false}
+            />
           </RouterProvider>
         </CartProvider>
       </RoleProvider>

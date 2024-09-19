@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
 
@@ -47,6 +48,11 @@ const AddProduct = () => {
     // Submit form data to the backend
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // Check if all required fields are filled
+        if (!burger.name || !burger.category || !burger.price[0].small || !burger.price[0].medium || !burger.price[0].large || !burger.image || !burger.description) {
+            toast.error('Please fill in all required fields.');
+            return;
+        }
 
         // Generate a random id if needed, or allow MongoDB to auto-generate it
         const newBurger = {
@@ -55,7 +61,7 @@ const AddProduct = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:8000/addburger', {
+            const response = await fetch('https://burgershopserver-production.up.railway.app/addburger', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,6 +71,16 @@ const AddProduct = () => {
 
             if (response.ok) {
                 setSuccessMessage('Burger added successfully!');
+                toast('Burger added successfully!!',
+                    {
+                        icon: '👏',
+                        style: {
+                            borderRadius: '10px',
+                            background: '#333',
+                            color: '#fff',
+                        },
+                    }
+                );
                 // Reset the form after submission
                 setBurger({
                     id: '',
@@ -86,12 +102,13 @@ const AddProduct = () => {
             }
         } catch (error) {
             console.error('Error:', error);
+            toast.error(error)
         }
     };
 
     return (
         <div className="p-6 w-full md:w-2/3 mx-auto bg-white shadow-md rounded-lg">
-            <h1 className="text-2xl font-bold mb-4 text-center">Add a New Burger</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center">Add a New Product</h1>
 
             <form onSubmit={handleSubmit}>
                 <div className='grid grid-cols-2 gap-4'>

@@ -2,6 +2,8 @@ import { useUser } from '@clerk/clerk-react';
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CartContext } from '../../UseContext/CartContext';
+// import CheckOut from './CheckOut';
+import toast from 'react-hot-toast';
 
 
 
@@ -26,8 +28,19 @@ const ConfirmationForm = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+
+
+
+
     // Handle cash on delivery
     const handleCashOnDelivery = () => {
+
+
+        // Check if any form data is missing
+        if (!formData.name || !formData.phone || !formData.address) {
+            alert("Please fill in all required fields.") // Alert if any field is missing
+            return;
+        }
         // Prepare the order data to send to the backend
         const orderData = {
             customerInfo: {
@@ -41,26 +54,31 @@ const ConfirmationForm = () => {
             orderDate: new Date(),
         };
         console.log(orderData);
+
         // Use fetch to send POST request to the server
-        fetch("http://localhost:8000/orders", {
+        fetch("https://burgershopserver-production.up.railway.app/orders", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(orderData) // Convert JS object to JSON string
+            body: JSON.stringify(orderData)
         })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 console.log("Order placed successfully:", data);
-
-
-                localStorage.removeItem("cartItems"); // Clear localStorage
-                setCartItems([]); // Clear cart state
-                navigate('/ordersuccess'); // Redirect to success page
-                // Adjust timeout duration as needed
+                alert("Order placed successfully!");
+                localStorage.removeItem("cartItems");
+                setCartItems([]);
+                navigate('/ordersuccess');
             })
             .catch(error => {
                 console.error("Error placing order:", error);
+                alert("Failed to place order. Please try again.");
             });
 
 
@@ -153,12 +171,9 @@ const ConfirmationForm = () => {
                     </div>
 
                     <div className="mt-6 flex justify-between">
-                        <button
-                            type="submit"
-                            className="btn btn-outline w-1/2 mr-2  "
-                        >
-                            Pay Now
-                        </button>
+
+                        {/* <CheckOut ></CheckOut> */}
+
                         <button
                             type="button"
                             className="btn btn-outline w-1/2 ml-2"
